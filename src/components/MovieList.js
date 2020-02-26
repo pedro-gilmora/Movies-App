@@ -1,31 +1,55 @@
 import React from 'react';
 import styled from 'styled-components'
+import Button from './Button';
 
 const MovieList = styled.ul`
-    
+    max-width:650px;
+    list-style:none;
+    padding: 0;
+    margin:8px;
 `;
 
-export default class SeachBar extends React.Component{
-  constructor(props) {
-    super(props);
-    this.state = {list: [
-        {name:'Star Wars: 1', category: 'Sci-Fi'},
-        {name:'Star Wars: 2', category: 'Sci-Fi'},
-        {name:'Star Wars: 3', category: 'Sci-Fi'},
-        {name:'Star Wars: 4', category: 'Sci-Fi'},
-        {name:'A walk to remember', category: 'Drama'},
-    ]};
-
-    this.handleChange = this.handleChange.bind(this);
+const Item = styled.li`
+  font-family:monospace;
+  display:flex;
+  align-content: space-between;
+  justify-content: space-between;
+  
+  &:first-child{
+    color:grey;
+    font-size: 38px;
   }
 
-  handleChange(event) {
-    this.setState({value: event.target.value});
+  &:nth-child(2n+1):not(:first-child){
+    background-color:lightgrey;
   }
+  & > * {
+    padding:8px;
+  }
+`;
 
+export default class SeachBar extends React.Component {
+  
   render() {
-    return (<MovieList>          
-        {this.state.list.map(el =><li>{el.name}: {el.category}</li>)}
+    const { movies, filter, onDelete } = this.props; // ES6 destructuring
+    return (<MovieList>
+      {/* Header element */}
+      <Item>
+        <b>Title</b>
+        <b>Category</b>
+      </Item>
+
+      {/* Movies row */}
+      {movies
+        .filter(item => item.title.toLocaleLowerCase().trim().includes(filter.title) && 
+                        item.category.toLocaleLowerCase().trim().includes(filter.category))
+        .map((el, i) => 
+        <Item key={i}>
+          <b>&#x1F3A5;{el.title}</b>
+          <b>{el.category}</b>
+          {/* <Button onClick={() => onDelete(i)}>Eliminar</Button> */}
+        </Item>)}
+
     </MovieList>
     );
   }
