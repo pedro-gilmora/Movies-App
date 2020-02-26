@@ -1,7 +1,7 @@
 import React from 'react';
-import ToolBar from './ToolBar';
-import TextInput from './TextInput';
-import Button from './Button';
+import ToolBar from '../controls/ToolBar';
+import TextInput from '../controls/TextInput';
+import Button from '../controls/Button';
 
 export default class SearchBar extends React.Component {
   constructor(props) {
