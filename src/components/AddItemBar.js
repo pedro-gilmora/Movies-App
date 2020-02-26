@@ -2,6 +2,7 @@ import React from 'react';
 import ToolBar from '../controls/ToolBar';
 import TextInput from '../controls/TextInput';
 import Button from '../controls/Button';
+import Icon from '../controls/Icon'
 
 
 export default class AddItemBar extends React.Component {
@@ -44,9 +45,9 @@ export default class AddItemBar extends React.Component {
 
     return (<ToolBar autoComplete="off" onSubmit={this.onSubmit} title="Añadir elemento">
 
-      <TextInput name="title" placeholder="Movie" onInput={this.checkValidations} />
+      <TextInput name="title" placeholder="Filme" onInput={this.checkValidations} />
 
-      <TextInput name="category" placeholder="Genre" list="categoriesList" onInput={this.checkValidations} />
+      <TextInput name="category" placeholder="Género" list="categoriesList" onInput={this.checkValidations} />
 
       <datalist id="categoriesList">
         {movies.
@@ -56,7 +57,7 @@ export default class AddItemBar extends React.Component {
           map((category, i) => <option value={category} key={i}> {category} </option>)}
       </datalist>
 
-      <Button type="submit"><b style={{ margin: 6 }}>+</b></Button>
+      <Button type="submit"><Icon icon="plus" size={24}/></Button>
 
     </ToolBar>);
   }

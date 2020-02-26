@@ -1,10 +1,8 @@
 import styled from 'styled-components';
 
 export default styled.button`
-        padding:7px;
-        margin:8px; 
+        padding: 2px 6px;
         border:0; 
-        font-family:monospace;
         border-radius: 18px;
         outline:none;
     `;

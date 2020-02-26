@@ -26,9 +26,9 @@ export default class SearchBar extends React.Component {
 
     return (<ToolBar onSubmit={this.onSubmit}>
 
-      <TextInput name="title" type="search" placeholder="Search by name..." onChange={this.valueChanged} />
+      <TextInput name="title" type="search" placeholder="Buscar por nombre..." onChange={this.valueChanged} />
 
-      <TextInput name="category" type="search" placeholder="Filter by genre..." onChange={this.valueChanged} list="categoriesListSearch" />
+      <TextInput name="category" type="search" placeholder="Filtrar por género..." onChange={this.valueChanged} list="categoriesListSearch" />
 
       <datalist id="categoriesListSearch">
         {movies.

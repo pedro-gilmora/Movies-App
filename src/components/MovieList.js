@@ -1,6 +1,7 @@
 import React from 'react';
 import styled from 'styled-components'
 import Button from '../controls/Button';
+import Icon from '../controls/Icon';
 
 const MovieList = styled.ul`
     max-width:650px;
@@ -35,8 +36,8 @@ export default class SeachBar extends React.Component {
     return (<MovieList>
       {/* Header element */}
       <Item>
-        <b>Movie</b>
-        <b>Genre</b>
+        <b>Filme</b>
+        <b>Género</b>
       </Item>
 
       {/* Movies row */}
@@ -45,7 +46,7 @@ export default class SeachBar extends React.Component {
                         item.category.toLocaleLowerCase().trim().includes(filter.category))
         .map((el, i) => 
         <Item key={i}>
-          <b>&#x1F3A5;{el.title}</b>
+          <span><Icon icon="film" size={24}/>{el.title}</span>
           <b>{el.category}</b>
           {/* <Button onClick={() => onDelete(i)}>Eliminar</Button> */}
         </Item>)}

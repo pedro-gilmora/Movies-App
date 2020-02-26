@@ -1,8 +1,11 @@
+import '@mdi/font/css/materialdesignicons.min.css'
 import React from 'react';
 import styled from 'styled-components';
+import GlobalStyles from './GlobalStyles'
 import AddItemBar from './components/AddItemBar'
 import SearchBar from './components/SearchBar'
 import MovieList from './components/MovieList'
+import Icon from './controls/Icon'
 
 const AppWrapper = styled.div`
   max-width:650px;
@@ -58,19 +61,24 @@ export default class App extends React.Component {
   onDelete(e) {
     let movies = this.state.movies.slice();
     movies.splice(e, 1);
-    this.setState({ movies });g
+    this.setState({ movies }); g
   }
 
   render() {
     return (
-      <AppWrapper>
-        <h1 style={{ textAlign: "center", fontFamily: "monospace", fontSize: 28 }}>&#x1f39e;Movie catalog</h1>
-        <section style={{ borderRadius: 8, background: "lightgrey" }}>
-          <SearchBar onSearch={this.onSearch} movies={this.state.movies} />
-          <AddItemBar onNewItem={this.onNewItem} movies={this.state.movies} />
-        </section>
-        <MovieList movies={this.state.movies} filter={this.state.filter} onDelete={this.onDelete} />
-      </AppWrapper>
+      <>
+        <GlobalStyles />
+        <AppWrapper>
+          
+          <h1 style={{ textAlign: "center", fontSize: 28 }}><Icon icon="movie" size={28}/>Catálogo de filmes</h1>
+          <section style={{ borderRadius: 8, background: "lightgrey" }}>
+            <SearchBar onSearch={this.onSearch} movies={this.state.movies} />
+            <AddItemBar onNewItem={this.onNewItem} movies={this.state.movies} />
+          </section>
+          <MovieList movies={this.state.movies} filter={this.state.filter} onDelete={this.onDelete} />
+          
+        </AppWrapper>
+      </>
     );
   }
 
