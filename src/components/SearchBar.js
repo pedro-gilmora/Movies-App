@@ -26,9 +26,9 @@ export default class SearchBar extends React.Component {
 
     return (<ToolBar onSubmit={this.onSubmit}>
 
-      <TextInput name="title" type="search" placeholder="Title" onChange={this.valueChanged} />
+      <TextInput name="title" type="search" placeholder="Search by name..." onChange={this.valueChanged} />
 
-      <TextInput name="category" type="search" placeholder="Categories" onChange={this.valueChanged} list="categoriesListSearch" />
+      <TextInput name="category" type="search" placeholder="Filter by genre..." onChange={this.valueChanged} list="categoriesListSearch" />
 
       <datalist id="categoriesListSearch">
         {movies.
@@ -37,8 +37,6 @@ export default class SearchBar extends React.Component {
           //Muestro cada elementos
           map((category, i) => <option value={category} key={i}> {category} </option>)}
       </datalist>
-
-      <Button type="submit">&#128269;</Button>
 
     </ToolBar>);
   }

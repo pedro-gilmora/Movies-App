@@ -35,8 +35,8 @@ export default class SeachBar extends React.Component {
     return (<MovieList>
       {/* Header element */}
       <Item>
-        <b>Title</b>
-        <b>Category</b>
+        <b>Movie</b>
+        <b>Genre</b>
       </Item>
 
       {/* Movies row */}

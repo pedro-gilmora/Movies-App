@@ -44,9 +44,9 @@ export default class AddItemBar extends React.Component {
 
     return (<ToolBar autoComplete="off" onSubmit={this.onSubmit} title="Añadir elemento">
 
-      <TextInput name="title" placeholder="Title" onInput={this.checkValidations} />
+      <TextInput name="title" placeholder="Movie" onInput={this.checkValidations} />
 
-      <TextInput name="category" placeholder="Categories" list="categoriesList" onInput={this.checkValidations} />
+      <TextInput name="category" placeholder="Genre" list="categoriesList" onInput={this.checkValidations} />
 
       <datalist id="categoriesList">
         {movies.
