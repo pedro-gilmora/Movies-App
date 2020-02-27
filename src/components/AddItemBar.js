@@ -43,21 +43,13 @@ export default class AddItemBar extends React.Component {
 
     const { movies } = this.props;
 
-    return (<ToolBar autoComplete="off" onSubmit={this.onSubmit} title="Añadir elemento">
+    return (<ToolBar autoComplete="off" onSubmit={this.onSubmit} title="Añadir película...">
 
-      <TextInput name="title" placeholder="Filme" onInput={this.checkValidations} />
+      <TextInput name="title" flex="20%" placeholder="Filme" onInput={this.checkValidations} />
 
       <TextInput name="category" placeholder="Género" list="categoriesList" onInput={this.checkValidations} />
 
-      <datalist id="categoriesList">
-        {movies.
-          //Reduce las lista de películas a una de categorias únicas 
-          reduce((items, el) => (!items.includes(el.category) && items.push(el.category), items), []).
-          //Muestro cada elementos
-          map((category, i) => <option value={category} key={i}> {category} </option>)}
-      </datalist>
-
-      <Button type="submit"><Icon icon="plus" size={24}/></Button>
+      <Button type="submit"><Icon icon="plus" size={24}/><span>AGREGAR</span></Button>
 
     </ToolBar>);
   }

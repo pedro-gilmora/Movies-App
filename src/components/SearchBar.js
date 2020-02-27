@@ -1,7 +1,6 @@
 import React from 'react';
 import ToolBar from '../controls/ToolBar';
 import TextInput from '../controls/TextInput';
-import Button from '../controls/Button';
 
 export default class SearchBar extends React.Component {
   constructor(props) {
@@ -22,21 +21,11 @@ export default class SearchBar extends React.Component {
 
   render() {
 
-    const { movies } = this.props;
+    return (<ToolBar onSubmit={this.onSubmit} title="Buscar películas...">
+      
+      <TextInput name="title" flex="1" type="search" placeholder="Buscar por nombre..." onChange={this.valueChanged} />
 
-    return (<ToolBar onSubmit={this.onSubmit}>
-
-      <TextInput name="title" type="search" placeholder="Buscar por nombre..." onChange={this.valueChanged} />
-
-      <TextInput name="category" type="search" placeholder="Filtrar por género..." onChange={this.valueChanged} list="categoriesListSearch" />
-
-      <datalist id="categoriesListSearch">
-        {movies.
-          //Reduce las lista de películas a una de categorias únicas 
-          reduce((items, el) => (!items.includes(el.category) && items.push(el.category), items), []).
-          //Muestro cada elementos
-          map((category, i) => <option value={category} key={i}> {category} </option>)}
-      </datalist>
+      <TextInput name="category" flex="1" type="search" placeholder="Filtrar por género..." onChange={this.valueChanged} list="categoriesList" />
 
     </ToolBar>);
   }

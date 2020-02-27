@@ -1,14 +1,17 @@
 import styled from 'styled-components'
 
 export default styled.input`
-    flex:1 1 auto;
-    border:0;
-    margin: 8px;
-    padding: 6px;
+    border: 0;
+    background: #ffffff40;
+    padding: 8px 16px;
     border-bottom: 2px solid gray;
-    outline:none;
-    border-top-right-radius: 4px;
-    border-top-left-radius: 4px;
+    outline: none;
+    border-radius: 18px;
+    margin: 4px;
+
+    &::placeholder{
+        color: white;
+    }
 
     &:invalid {
         border-bottom: 2px solid red;

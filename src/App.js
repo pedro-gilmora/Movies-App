@@ -8,13 +8,28 @@ import MovieList from './components/MovieList'
 import Icon from './controls/Icon'
 
 const AppWrapper = styled.div`
-  max-width:650px;
+  max-width:560px;
   margin: 0 auto;
-  padding:20px 0 0 0;
+  padding:20px 20px 0 20px;
 
   & * {
     font-size: 16px;
   }
+`
+
+const Title = styled.h1`
+  text-align: center; 
+  font-size: 28px;
+  margin: 40px; 
+  color: white;
+  border-radius: 48px;
+  background:#00000059;
+  padding:10px 0 ;
+  & > i{
+    margin: 0 16px;
+    color:white;
+  }
+
 `
 
 export default class App extends React.Component {
@@ -69,14 +84,17 @@ export default class App extends React.Component {
       <>
         <GlobalStyles />
         <AppWrapper>
-          
-          <h1 style={{ textAlign: "center", fontSize: 28 }}><Icon icon="movie" size={28}/>Catálogo de filmes</h1>
-          <section style={{ borderRadius: 8, background: "lightgrey" }}>
-            <SearchBar onSearch={this.onSearch} movies={this.state.movies} />
-            <AddItemBar onNewItem={this.onNewItem} movies={this.state.movies} />
-          </section>
+          <Title><Icon icon="movie" size={28} color="white" />Catálogo de filmes</Title>
+          <SearchBar onSearch={this.onSearch} movies={this.state.movies} />
+          <AddItemBar onNewItem={this.onNewItem} movies={this.state.movies} />
           <MovieList movies={this.state.movies} filter={this.state.filter} onDelete={this.onDelete} />
-          
+          <datalist id="categoriesList">
+          {this.state.movies.
+            //Reduce las lista de películas a una de categorias únicas 
+            reduce((items, el) => (!items.includes(el.category) && items.push(el.category), items), []).
+            //Muestro cada elementos
+            map((category, i) => <option value={category} key={i}> {category} </option>)}
+        </datalist>
         </AppWrapper>
       </>
     );
