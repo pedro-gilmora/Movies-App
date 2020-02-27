@@ -9,34 +9,25 @@ export default class AddItemBar extends React.Component {
   constructor(props) {
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
-    this.checkValidations = this.checkValidations.bind(this);
-  }
-
-  checkValidations(e){
-    e.target.setCustomValidity('');
-    e.target.checkValidity();
   }
 
   onSubmit(e) {
 
     let form = e.target;
-
+    
     //evito el comportamiento por defecto del formulario
     e.preventDefault();
-
+    
     const newItem = {
       category: form.category.value.trim(),
       title: form.title.value.trim()
     };
+
     //Si logra añadir el elemento
     if (this.props.onNewItem(newItem))
       //Reseteo el formulario
       form.reset();
-    else {
-      //Establezco los errores detectdados
-      form.title.setCustomValidity(newItem.titleError||'')
-      form.category.setCustomValidity(newItem.categoryError||'')
-    }
+
   }
 
   render() {
@@ -45,11 +36,11 @@ export default class AddItemBar extends React.Component {
 
     return (<ToolBar autoComplete="off" onSubmit={this.onSubmit} title="Añadir película...">
 
-      <TextInput name="title" flex="20%" placeholder="Filme" onInput={this.checkValidations} />
+      <TextInput name="title" flex="20%" placeholder="Filme" required />
 
-      <TextInput name="category" placeholder="Género" list="categoriesList" onInput={this.checkValidations} />
+      <TextInput name="category" placeholder="Género" list="categoriesList" required />
 
-      <Button type="submit"><Icon icon="plus" size={24}/><span>AGREGAR</span></Button>
+      <Button type="submit"><Icon icon="plus" size={24} /><span>AGREGAR</span></Button>
 
     </ToolBar>);
   }
